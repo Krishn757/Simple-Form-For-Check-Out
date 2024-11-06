@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://www.jquery-az.com/jquery/js/intlTelInput/intlTelInput.js"></script>
+<link href="https://www.jquery-az.com/jquery/css/intlTelInput/demo.css" rel="stylesheet" />
+<link href="https://www.jquery-az.com/jquery/css/intlTelInput/intlTelInput.css" rel="stylesheet" />
+        <title>Simple||Form</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .main{
+                height:95vh;
+                width: 45%;
+                border: 1px solid black;
+                border: none;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 4%;
+            }
+            
+        </style>
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <h1 style="color:#000000; text-align: center; font-family: inherit; font-weight: bolder; margin-top: 1%;">Let's get started</h1>
+        <form action="#" method="post">
+            <div class="main">
+               &nbsp;&nbsp; <label for="mobile-number">Enter your mobile number</label><br>
+               <input type="tel" id="mobile-number" style="width:30vw; border-radius: 50px; "  placeholder="e.g. +1 702 123 4567"> 
+               <button type="button" class="btn btn-info" style="background:#14b879; border: none; border-radius:10px; margin-left: 10px;">Get OTP</button>
+               <p style="font-size: 10px; color:red;">*The number you provide here will be the registerd mobile number.</p>
+               
+              &nbsp;&nbsp;<label for="otp">Enter OTP</label><br>
+              <input type="number" id="otp" style="border-radius: 50px;">
+              <button type="button" class="btn btn-info" style="background: #14b879;border: none; border-radius:10px;padding: 7px 26px 10px 28px; margin-left: 10px;">Verify</button>
+              <br><br>
+              
+              &nbsp;&nbsp;<label for="email">Enter your email address</label><br>
+              <input type="email" id="email" style="border-radius: 50px; width:37vw;">
+              <button type="button" class="btn btn-info" style="background: #14b879;border: none; border-radius:10px; margin-left: 10px;">Get OTP</button>
+            <br>
+            &nbsp;&nbsp;<label for="onetimepassword">Enter OTP</label><br>
+              <input type="number" id="onetimepassword" style="border-radius: 50px;">
+              <button type="button" class="btn btn-info" style="background: #14b879;border: none; border-radius:10px;padding: 7px 26px 10px 28px; margin-left: 10px;">Verify</button>
+            <br><br>
+               
+              &nbsp;&nbsp;<label for="pan">Enter your PAN number</label><br> 
+              <input type="text" id="pan" style="border-radius: 50px; width:43vw;"><br>
+            
+            &nbsp;&nbsp;<label for="dob">Date of Birth </label><br> 
+              <input type="number" id="dob" style="border-radius: 50px; width:25vw;">
+              <p style="font-size: 10px; color:red;">*Enter your date of birth as per your PAN card.</p>
+         <br><br>
+              <p style="text-align: center; font-size: 10px;">Creating an account means you're okay with your Terms of service, Privacy <br>Policy, and default Notification Setting</p>
+              <br>
+              <button type="button" class="btn btn-info" style="padding: 7px 26px 10px 28px; border-radius:10px; background: #14b879; display: block; margin: 0px auto;">Next</button>
+            </div>
+        </form>
+        <script>
+    $("#mobile-number").intlTelInput({
+  initialCountry: "auto",
+  geoIpLookup: function(callback) {
+    $.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
+      var countryCode = (resp && resp.country) ? resp.country : "";
+      callback(countryCode);
+    });
+  },
+  utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/utils.js" 
+});
+</script>
+    </body>
+</html>
